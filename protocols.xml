@@ -1,0 +1,6 @@
+<ProtocolProvider xmlns="urn:mace:shibboleth:3.0:native:sp:config">
+    <!-- Proveedor de protocolos SAML2 -->
+    <Protocol type="saml20"/>
+    <Protocol type="saml11"/>
+    <Protocol type="saml10"/>
+</ProtocolProvider>

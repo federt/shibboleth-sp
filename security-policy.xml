@@ -1,0 +1,10 @@
+<SecurityPolicies xmlns="urn:mace:shibboleth:3.0:native:sp:config">
+  <Policy id="default" validate="false">
+    <PolicyRule type="MessageFlow" checkReplay="true" expires="60"/>
+    <PolicyRule type="Conditions">
+      <PolicyRule type="Audience"/>
+    </PolicyRule>
+    <PolicyRule type="ClientCertAuth" errorFatal="true"/>
+    <PolicyRule type="XMLSigning" errorFatal="true"/>
+  </Policy>
+</SecurityPolicies>

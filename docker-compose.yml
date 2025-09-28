@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  sp:
+    build: .
+    container_name: shib-sp-ubuntu
+    ports:
+      - "8080:80"
+      - "8443:443"
+    restart: unless-stopped

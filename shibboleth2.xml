@@ -1,0 +1,45 @@
+<SPConfig xmlns="urn:mace:shibboleth:3.0:native:sp:config" clockSkew="180">
+
+  <!-- Procesos -->
+  <OutOfProcess/>
+  <InProcess/>
+  <UnixListener address="/var/run/shibboleth/shibd.sock"/>
+
+  <!-- Configuración de la aplicación por defecto -->
+  <ApplicationDefaults
+      entityID="https://sp.localtest.me/shibboleth"
+      REMOTE_USER="eppn uid persistent-id">
+
+    <!-- Sesiones -->
+    <Sessions lifetime="28800"
+              timeout="3600"
+              handlerURL="/Shibboleth.sso"
+              cookieProps="https"
+              redirectLimit="exact">
+      <SSO>SAML2</SSO>
+      <Logout>SAML2 Local</Logout>
+
+      <!-- Handlers -->
+      <Handler type="Status" Location="/Status"/>
+      <Handler type="Session" Location="/Session"/>
+      <Handler type="MetadataGenerator" Location="/Metadata"/>
+    </Sessions>
+
+    <!-- Extractor/Resolver de atributos -->
+    <AttributeExtractor type="XML" validate="true" path="attribute-map.xml"/>
+    <AttributeResolver type="Query"/>
+
+    <!-- Ejemplo de MetadataProvider (se agrega después si conectás un IdP) -->
+    <!--
+    <MetadataProvider type="XML" validate="true" path="idp-metadata.xml"/>
+    -->
+  </ApplicationDefaults>
+
+  <!-- Políticas de seguridad -->
+  <SecurityPolicyProvider type="XML" validate="true" path="security-policy.xml"/>
+
+  <!-- Opcional: protocolos (silencia algunos warnings)
+  <ProtocolProvider type="XML" validate="true" path="protocols.xml"/>
+  -->
+
+</SPConfig>
