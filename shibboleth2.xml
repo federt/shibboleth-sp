@@ -1,11 +1,11 @@
 <SPConfig xmlns="urn:mace:shibboleth:3.0:native:sp:config" clockSkew="180">
 
-  <!-- Procesos -->
+  <!-- Process -->
   <OutOfProcess/>
   <InProcess/>
   <UnixListener address="/var/run/shibboleth/shibd.sock"/>
 
-  <!-- Configuración de la aplicación por defecto -->
+  <!-- app default config. -->
   <ApplicationDefaults
       entityID="https://sp.localtest.me/shibboleth"
       REMOTE_USER="eppn uid persistent-id">
@@ -25,20 +25,20 @@
       <Handler type="MetadataGenerator" Location="/Metadata"/>
     </Sessions>
 
-    <!-- Extractor/Resolver de atributos -->
+    <!-- attributes Extractor/Resolver -->
     <AttributeExtractor type="XML" validate="true" path="attribute-map.xml"/>
     <AttributeResolver type="Query"/>
 
-    <!-- Ejemplo de MetadataProvider (se agrega después si conectás un IdP) -->
+    <!-- MetadataProvider example (after adding an IdP) -->
     <!--
     <MetadataProvider type="XML" validate="true" path="idp-metadata.xml"/>
     -->
   </ApplicationDefaults>
 
-  <!-- Políticas de seguridad -->
+  <!-- Security policies -->
   <SecurityPolicyProvider type="XML" validate="true" path="security-policy.xml"/>
 
-  <!-- Opcional: protocolos (silencia algunos warnings)
+  <!-- Optional: protocols 
   <ProtocolProvider type="XML" validate="true" path="protocols.xml"/>
   -->
 
